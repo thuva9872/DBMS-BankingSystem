@@ -110,6 +110,25 @@ CREATE TABLE IF NOT EXISTS `employee` (
   UNIQUE KEY `uniqueAttribur` (`NIC`,`email`) USING BTREE
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+
+-- ----------------
+-- Online transaction procedure
+DROP PROCEDURE IF EXISTS transfer_online;
+DELIMITER $$
+CREATE PROCEDUREtransfer_online(
+	sender_acc,
+  recipient_acc,
+  amount 
+)
+BEGIN
+	START TRANSACTION;
+		UPDATE account SET balance=balance-amount WHERE acc_no=sender_acc;
+    UPDATE account SET balance=balance+amount WHERE acc_no=recipient_acc;
+    --INSERT INTO transaction VALUES ();
+    COMMIT;
+
+END $$
+DELIMITER ;
 --
 -- Dumping data for table `employee`
 --

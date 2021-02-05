@@ -35,7 +35,7 @@ class Customer extends User
                     if($password == $resultRow['password']){
                         $resultRow['dp'] = ($resultRow['dp']) ? $resultRow['dp'] : 'img/profile/customerAvatar.png' ;
                         $_SESSION['core_bank_user'] = serialize(new Customer($resultRow['eMail'], $resultRow['NIC'], $resultRow['name'], $resultRow['mobileNo'], $resultRow['openedBranch'], $resultRow['DOB'], $resultRow['tempAddress'], $resultRow['permanantAddress'], $resultRow['job'], $resultRow['officialAddress'], $resultRow['openedBy'],$resultRow['dp'],$resultRow['joinedDate']));                        
-                        header("location:home/");
+                        header("location:customer/index.php");
                     }
                     else{
                         return "Your user name or password is wrong";
@@ -75,6 +75,54 @@ class Customer extends User
     public function getOpenedBy():string
     {
         return $this->openedBy;
+    }
+
+    public function updateAccount(){
+
+    }
+
+    public function checkBalance($account){
+        $sql = "SELECT * FROM account WHERE acc_no='".$account."'";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $stmt->execute([$userName]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function showAccounts(){
+        $sql = "SELECT * FROM account WHERE NIC = '".$SESSION['NIC']."'";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $stmt->execute([$userName]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getLoan($amount){
+        return 0;
+    }
+
+    public function transaction($sender,$recipient,$amount){
+        $sql = "SELECT * FROM customer WHERE NIC = '".$recipient."'";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $stmt->execute([$userName]);
+        $result = $stmt->fetchAll();
+        if(!$result){
+            return "Invalid recipient";
+        }
+        if($amount<=0){
+            return "Invalid amount";
+        }
+
+        $sql1 = "CALL transfer ('".$sender."','".$recipient."','".$amount."')";
+        $stmt1 = (new Connection)->connect()->prepare($sql1);
+        $stmt1->execute([$userName]);
+        $result = $stmt->fetchAll();
+
+        if (!result1){
+            return "Transaction failed";
+        }
+
+        return "Transaction success";
     }
 }
 

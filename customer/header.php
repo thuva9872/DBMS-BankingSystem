@@ -83,40 +83,26 @@ require "../loginCheck.php";
                 <nav class="sidebar-nav left-sidebar-menu-pro">
                     <ul class="metismenu" id="menu1">
                         <li class="active">
-                            <a class="has-arrow" href="index.php">
+                            <a  href="../customer/accounts.php">
 								   <span class="educate-icon educate-home icon-wrap"></span>
-								   <span class="mini-click-non">Education</span>
+								   <span class="mini-click-non">Accounts</span>
 								</a>
-                            <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="index.php"><span class="mini-sub-pro">Dashboard v.1</span></a></li>
-                                <li><a title="Dashboard v.2" href="index-1.php"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
-                                <li><a title="Dashboard v.3" href="index-2.php"><span class="mini-sub-pro">Dashboard v.3</span></a></li>
-                                <li><a title="Analytics" href="analytics.php"><span class="mini-sub-pro">Analytics</span></a></li>
-                                <li><a title="Widgets" href="widgets.php"><span class="mini-sub-pro">Widgets</span></a></li>
-                            </ul>
+                        </li>
+                        
+                        <li>
+                            <a href="../customer/transaction.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Online Transaction</span></a>
+                           
                         </li>
                         <li>
-                            <a title="Landing Page" href="events.php" aria-expanded="false"><span class="educate-icon educate-event icon-wrap sub-icon-mg" aria-hidden="true"></span> <span class="mini-click-non">Event</span></a>
-                        </li>
-                        <li>
-                            <a class="has-arrow" href="all-professors.php" aria-expanded="false"><span class="educate-icon educate-professor icon-wrap"></span> <span class="mini-click-non">Professors</span></a>
+                            <a class="has-arrow" aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Loans</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Professors" href="all-professors.php"><span class="mini-sub-pro">All Professors</span></a></li>
-                                <li><a title="Add Professor" href="add-professor.php"><span class="mini-sub-pro">Add Professor</span></a></li>
-                                <li><a title="Edit Professor" href="edit-professor.php"><span class="mini-sub-pro">Edit Professor</span></a></li>
-                                <li><a title="Professor Profile" href="professor-profile.php"><span class="mini-sub-pro">Professor Profile</span></a></li>
+                                <li><a title="All Students" href="../customer/new-loan.php"><span class="mini-sub-pro">Get New Loan</span></a></li>
+                                <li><a title="Add Students" href="../customer/loan-plans.php"><span class="mini-sub-pro">Show Loan Plans</span></a></li>
+                                <li><a title="Edit Students" href="../customer/current-loans.php"><span class="mini-sub-pro">Current Loans</span></a></li>
+                                <li><a title="Students Profile" href="../customer/pay-loan.php"><span class="mini-sub-pro">Pay Installment</span></a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a class="has-arrow"  aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Customer</span></a>
-                            <ul class="submenu-angle" aria-expanded="false">
-                                <li><a title="All Students" href="../employee/all-customers.php"><span class="mini-sub-pro">All Customers</span></a></li>
-                                <li><a title="Add Students" href="add-customer.php"><span class="mini-sub-pro">Add Customer</span></a></li>
-                                <li><a title="Edit Students" href="edit-customer.php"><span class="mini-sub-pro">Edit Customer</span></a></li>
-                                <li><a title="Students Profile" href="customer-profile.php"><span class="mini-sub-pro">Customer Profile</span></a></li>
-                            </ul>
-                        </li>
-                        <li>
+                        <!-- <li>
                             <a class="has-arrow" href="all-courses.php" aria-expanded="false"><span class="educate-icon educate-course icon-wrap"></span> <span class="mini-click-non">Courses</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Courses" href="all-courses.php"><span class="mini-sub-pro">All Courses</span></a></li>
@@ -214,7 +200,7 @@ require "../loginCheck.php";
                                 <li><a title="404 Page" href="404.php"><span class="mini-sub-pro">404 Page</span></a></li>
                                 <li><a title="500 Page" href="500.php"><span class="mini-sub-pro">500 Page</span></a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -254,15 +240,6 @@ require "../loginCheck.php";
                                                 <li class="nav-item"><a href="#" class="nav-link">About</a>
                                                 </li>
                                                 <li class="nav-item"><a href="#" class="nav-link">Services</a>
-                                                </li>
-                                                <li class="nav-item dropdown res-dis-nn">
-                                                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">Project <span class="angle-down-topmenu"><i class="fa fa-angle-down"></i></span></a>
-                                                    <div role="menu" class="dropdown-menu animated zoomIn">
-                                                        <a href="#" class="dropdown-item">Documentation</a>
-                                                        <a href="#" class="dropdown-item">Expert Backend</a>
-                                                        <a href="#" class="dropdown-item">Expert FrontEnd</a>
-                                                        <a href="#" class="dropdown-item">Contact Support</a>
-                                                    </div>
                                                 </li>
                                                 <li class="nav-item"><a href="#" class="nav-link">Support</a>
                                                 </li>

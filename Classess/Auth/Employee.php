@@ -68,6 +68,14 @@ class Employee extends User implements Staff
     public function getID():int{
         return $this->id;
     }
+
+    public function showCustomers(){
+        $sql = "SELECT * FROM Customer";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 }
 
 ?>

@@ -44,6 +44,20 @@ class Customer extends User
             }
             return "Warning: must give username and password";
         }
+    /**
+     * Register customer
+     */
+    public function register($password){
+        $sql = "INSERT INTO customer VALUES ('".$this->getNIC()."','".$this->getFname()."','".$this->getMail()."','".$password."','".$this->getmobileNo()."','".$this->tempAddress."','".$this->getAddress()."','".$this->job."','".$this->officialAddress."','".$this->getDOB()."','".$this->getDp()."','".$this->openedBy."','".$this->getBranchCode()."','".$this->getJoinedDate()."','".$this->getJoinedDate()."',null)";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $result=$stmt->execute();
+        if ($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     /**
      * Get the value of tempAddress

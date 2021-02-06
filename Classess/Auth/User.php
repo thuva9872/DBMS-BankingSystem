@@ -63,7 +63,6 @@ abstract class User extends Connection{
      */
     public function getNIC():String
     {
-        echo $this->NIC;
         return $this->nic;
     }
 
@@ -94,7 +93,7 @@ abstract class User extends Connection{
     /**
      * @return brachCode
      */
-    public function getBrachCode():String
+    public function getBranchCode():String
     {
         return $this->branchCode;
     }

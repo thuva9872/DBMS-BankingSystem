@@ -58,6 +58,17 @@ class Customer extends User
             return false;
         }
     }
+    public function edit($updatedDate){
+        $sql = "UPDATE customer SET NIC='".$this->getNIC()."',email='".$this->getMail()."',name='".$this->getFname()."',mobileNo='".$this->getmobileNo()."',tempAddress='".$this->gettempAddress()."',permanantAddress='".$this->getAddress()."',Job='".$this->getJob()."',officialAddress='".$this->getOfficialAddress()."',DOB='".$this->getDOB()."',dp='".$this->getDp()."',openedBy='".$this->getOpenedBy()."',openedBranch='".$this->getBranchCode()."',joinedDate='".$this->getJoinedDate()."',updatedDate='".$updatedDate."',leftDate=null WHERE NIC='".$this->getNIC()."'";
+        $stmt = (new Connection)->connect()->prepare($sql);
+        $result=$stmt->execute();
+        if ($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     /**
      * Get the value of tempAddress

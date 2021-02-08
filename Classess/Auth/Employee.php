@@ -76,6 +76,25 @@ class Employee extends User implements Staff
         $result = $stmt->fetchAll();
         return $result;
     }
+
+    public function showCustomer($nic){
+        $sql="SELECT * FROM Customer WHERE NIC='".$nic."'";
+        $stmt=(new Connection)->connect()->prepare($sql);
+        $stmt->execute();
+        $customer = $stmt->fetchAll()[0];
+        $_SESSION['search']=$customer;
+        return $customer;
+    }
+
+    public function editCustomer($customer,$updatedDate){
+        $result=$customer->edit($updatedDate);
+        if ($result){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 ?>

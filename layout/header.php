@@ -111,9 +111,9 @@ require "../loginCheck.php";
                             <a class="has-arrow"  aria-expanded="false"><span class="educate-icon educate-student icon-wrap"></span> <span class="mini-click-non">Customer</span></a>
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="All Students" href="../employee/all-customers.php"><span class="mini-sub-pro">All Customers</span></a></li>
-                                <li><a title="Add Students" href="add-customer.php"><span class="mini-sub-pro">Add Customer</span></a></li>
-                                <li><a title="Edit Students" href="edit-customer.php"><span class="mini-sub-pro">Edit Customer</span></a></li>
-                                <li><a title="Students Profile" href="customer-profile.php"><span class="mini-sub-pro">Customer Profile</span></a></li>
+                                <li><a title="Add Students" href="../employee/add-customer.php"><span class="mini-sub-pro">Add Customer</span></a></li>
+                                <li><a title="Edit Students" href="../employee/select-customer.php"><span class="mini-sub-pro">Edit Customer</span></a></li>
+                                <li><a title="Students Profile" href="../employee/customer-profile.php"><span class="mini-sub-pro">Customer Profile</span></a></li>
                             </ul>
                         </li>
                         <li>

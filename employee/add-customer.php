@@ -5,8 +5,9 @@
         use Classess\Auth\Customer;
         if (isset($_POST['add'])){
             $currentDate=date('Y-m-d h:i:s a', time());
-            $customer=new Customer($_REQUEST['email'],$_REQUEST['NIC'],$_REQUEST['firstName'],$_REQUEST['mobileNo'],$_REQUEST['tempAddress'],$_REQUEST['permanentAddress'],$_REQUEST['job'],$_REQUEST['officialAddress'],$_REQUEST['dob'],$_REQUEST['dp'],$_REQUEST['openedBy'],$_REQUEST['openedBranch'],$currentDate,$currentDate,null);
-            $result=$customer->register($_REQUEST['password']);
+            $customer=new Customer($_REQUEST['email'],$_REQUEST['NIC'],$_REQUEST['firstName'],$_REQUEST['mobileNo'],$_REQUEST['openedBranch'],$_REQUEST['dob'],$_REQUEST['tempAddress'],$_REQUEST['permanentAddress'],$_REQUEST['job'],$_REQUEST['officialAddress'],$_REQUEST['openedBy'],$_REQUEST['dp'],$currentDate);
+            $password=md5($_REQUEST['password']);
+            $result=$customer->register($password);
             if ($result){
                 echo "Succesfully registerd"; 
             }
@@ -65,39 +66,39 @@
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="form-group">
-                                                                    <input name="NIC" type="text" class="form-control" placeholder="NIC">
+                                                                    <input name="NIC" type="text" class="form-control" placeholder="NIC" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="firstName" type="text" class="form-control" placeholder="Full Name">
+                                                                    <input name="firstName" type="text" class="form-control" placeholder="Full Name" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="email" type="text" class="form-control" placeholder="example@email.com">
+                                                                    <input name="email" type="text" class="form-control" placeholder="example@email.com" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="password" type="password" class="form-control" placeholder="password">
+                                                                    <input name="password" type="password" class="form-control" placeholder="password" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="mobileNo" type="number" class="form-control" placeholder="Mobile no.">
+                                                                    <input name="mobileNo" type="number" class="form-control" placeholder="Mobile no." required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="tempAddress" type="text" class="form-control" placeholder="Temporary Address">
+                                                                    <input name="tempAddress" type="text" class="form-control" placeholder="Temporary Address" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="permanentAddress" type="text" class="form-control" placeholder="Permanent Address">
+                                                                    <input name="permanentAddress" type="text" class="form-control" placeholder="Permanent Address" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="job"  type="text" class="form-control" placeholder="Job">
+                                                                    <input name="job"  type="text" class="form-control" placeholder="Job" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="officialAddress" type="text" class="form-control" placeholder="Official Address">
+                                                                    <input name="officialAddress" type="text" class="form-control" placeholder="Official Address" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <h5>Date of Birth</h5>
-                                                                    <input name="dob" type="date" class="form-control" placeholder="Date of Birth">
+                                                                    <input name="dob" type="date" class="form-control" placeholder="Date of Birth" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <h5>DP</h5>
-                                                                    <input name="dp" class="hd-pro-img" type="file" />
+                                                                    <input name="dp" class="hd-pro-img" type="file" required />
                                                                 </div>
                                                                 <!-- <div class="form-group alert-up-pd">
                                                                     <div class="dz-message needsclick download-custom">
@@ -112,10 +113,10 @@
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input name="openedBy" type="text" class="form-control" placeholder="Opened By">
+                                                                    <input name="openedBy" type="text" class="form-control" placeholder="Opened By" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input name="openedBranch" type="text" class="form-control" placeholder="Branch">
+                                                                    <input name="openedBranch" type="text" class="form-control" placeholder="Branch" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <select name="gender" class="form-control">

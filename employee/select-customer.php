@@ -3,8 +3,14 @@
 <?php
         include("../layout/header.php");
         if (isset($_POST['search'])){
-           $_SESSION['nic']=$_REQUEST['NIC'];
-           header("location: edit-customer.php");
+            $result=$loginedUser->showCustomer($_REQUEST['NIC']);
+            if ($result=="No Customer"){
+                echo "Incorrect NIC";
+            }
+            else{
+            $_SESSION['nic']=$_REQUEST['NIC'];
+            header("location: edit-customer.php");
+            }
         }
 ?>
             <div class="breadcome-area">

@@ -81,9 +81,12 @@ class Employee extends User implements Staff
         $sql="SELECT * FROM Customer WHERE NIC='".$nic."'";
         $stmt=(new Connection)->connect()->prepare($sql);
         $stmt->execute();
-        $customer = $stmt->fetchAll()[0];
-        $_SESSION['search']=$customer;
-        return $customer;
+        $customer = $stmt->fetchAll();
+        if (!$customer){
+            return "No Customer";
+        }
+        $_SESSION['search']=$customer[0];
+        return $customer[0];
     }
 
     public function editCustomer($customer,$updatedDate){

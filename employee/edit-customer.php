@@ -68,44 +68,44 @@
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
                                                                     <label>NIC</label>
-                                                                    <input name="NIC" type="text" class="form-control" value=<?php echo $data['NIC'] ?>>
+                                                                    <input name="NIC" type="text" class="form-control" value=<?php echo $data['NIC'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Name</label>
-                                                                    <input name="firstName" type="text" class="form-control" value=<?php echo $data['name'] ?>>
+                                                                    <input name="firstName" type="text" class="form-control" value=<?php echo $data['name'] ?> required> 
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Mail</label>
-                                                                    <input name="email" type="text" class="form-control" value=<?php echo $data['eMail'] ?>>
+                                                                    <input name="email" type="text" class="form-control" value=<?php echo $data['eMail'] ?> required>
                                                                 </div>
                                                                 
                                                                 <div class="form-group">
                                                                     <label>Mobile No</label>
-                                                                    <input name="mobileNo" type="number" class="form-control" value=<?php echo $data['mobileNo'] ?>>
+                                                                    <input name="mobileNo" type="number" class="form-control" value=<?php echo $data['mobileNo'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Temporary Address</label>
-                                                                    <input name="tempAddress" type="text" class="form-control" value=<?php echo $data['tempAddress'] ?>>
+                                                                    <input name="tempAddress" type="text" class="form-control" value=<?php echo $data['tempAddress'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Permanent Address</label>
-                                                                    <input name="permanentAddress" type="text" class="form-control" value=<?php echo $data['permanantAddress'] ?>>
+                                                                    <input name="permanentAddress" type="text" class="form-control" value=<?php echo $data['permanantAddress'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>JOB</label>
-                                                                    <input name="job"  type="text" class="form-control" value=<?php echo $data['job'] ?>>
+                                                                    <input name="job"  type="text" class="form-control" value=<?php echo $data['job'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Official Address</label>
-                                                                    <input name="officialAddress" type="text" class="form-control" value=<?php echo $data['officialAddress'] ?>>
+                                                                    <input name="officialAddress" type="text" class="form-control" value=<?php echo $data['officialAddress'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Date of Birth</label>
-                                                                    <input name="dob" type="date" class="form-control" value=<?php echo $data['DOB'] ?>>
+                                                                    <input name="dob" type="date" class="form-control" value=<?php echo $data['DOB'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>DP</label>
-                                                                    <input name="dp" class="hd-pro-img" type="file" value=<?php echo $data['dp'] ?>/>
+                                                                    <input name="dp" class="hd-pro-img" type="file" value=<?php echo $data['dp'] ?>>
                                                                 </div>
                                                                 <!-- <div class="form-group alert-up-pd">
                                                                     <div class="dz-message needsclick download-custom">
@@ -121,19 +121,19 @@
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
                                                                     <label>Opened By</label>
-                                                                    <input name="openedBy" type="text" class="form-control" value=<?php echo $data['openedBy'] ?>>
+                                                                    <input name="openedBy" type="text" class="form-control" value=<?php echo $data['openedBy'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Opened Branch</label>
-                                                                    <input name="openedBranch" type="text" class="form-control" value=<?php echo $data['openedBranch'] ?>>
+                                                                    <input name="openedBranch" type="text" class="form-control" value=<?php echo $data['openedBranch'] ?> required> 
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Joined Date</label>
-                                                                    <input name="joinedDate" type="text" class="form-control" value=<?php echo $data['joinedDate'] ?>>
+                                                                    <input name="joinedDate" type="text" class="form-control" value=<?php echo $data['joinedDate'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>Updated Date</label>
-                                                                    <input name="updatedDate" type="text" class="form-control" value=<?php echo $data['updatedDate'] ?>>
+                                                                    <input name="updatedDate" type="text" class="form-control" value=<?php echo $data['updatedDate'] ?> required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <select name="gender" class="form-control">

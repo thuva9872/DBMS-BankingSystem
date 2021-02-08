@@ -2,7 +2,21 @@
 <html class="no-js" lang="en">
 <?php
         include("../layout/header.php");
-    ?>
+        use Classess\Auth\Customer;
+        $data=$loginedUser->showCustomer($_SESSION['nic']);
+        if (isset($_POST['edit'])){
+            $currentDate=date('Y-m-d h:i:s a', time());
+            $customer=new Customer($_REQUEST['email'],$_REQUEST['NIC'],$_REQUEST['firstName'],$_REQUEST['mobileNo'],$_REQUEST['openedBranch'],$_REQUEST['dob'],$_REQUEST['tempAddress'],$_REQUEST['permanentAddress'],$_REQUEST['job'],$_REQUEST['officialAddress'],$_REQUEST['openedBy'],$_REQUEST['dp'],$_REQUEST['joinedDate'],null);
+            $result=$loginedUser->editCustomer($customer,$currentDate);
+            if($result){
+                echo "Edited";
+                header("location: select-customer.php");
+            }
+            else{
+                echo "Failed";
+            }
+        }
+?>
             <div class="breadcome-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -21,7 +35,7 @@
                                         <ul class="breadcome-menu">
                                             <li><a href="#">Home</a> <span class="bread-slash">/</span>
                                             </li>
-                                            <li><span class="bread-blod">Edit Student</span>
+                                            <li><span class="bread-blod">Edit Customer</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -49,89 +63,91 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                    <form action="#" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                    <form action="edit-customer.php" method="POST" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input name="number" type="text" class="form-control" placeholder="Fly Zend" value="Fly Zend">
+                                                                    <label>NIC</label>
+                                                                    <input name="NIC" type="text" class="form-control" value=<?php echo $data['NIC'] ?>>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control" placeholder="E104, catn-2, UK." value="E104, catn-2, UK.">
+                                                                    <label>Name</label>
+                                                                    <input name="firstName" type="text" class="form-control" value=<?php echo $data['name'] ?>>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control" placeholder="12/10/1993" value="12/10/1993">
+                                                                    <label>Mail</label>
+                                                                    <input name="email" type="text" class="form-control" value=<?php echo $data['eMail'] ?>>
+                                                                </div>
+                                                                
+                                                                <div class="form-group">
+                                                                    <label>Mobile No</label>
+                                                                    <input name="mobileNo" type="number" class="form-control" value=<?php echo $data['mobileNo'] ?>>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="number" class="form-control" placeholder="1213" value="1213">
+                                                                    <label>Temporary Address</label>
+                                                                    <input name="tempAddress" type="text" class="form-control" value=<?php echo $data['tempAddress'] ?>>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <input type="number" class="form-control" placeholder="01962067309" value="01962067309">
+                                                                    <label>Permanent Address</label>
+                                                                    <input name="permanentAddress" type="text" class="form-control" value=<?php echo $data['permanantAddress'] ?>>
                                                                 </div>
-                                                                <div class="form-group alert-up-pd">
+                                                                <div class="form-group">
+                                                                    <label>JOB</label>
+                                                                    <input name="job"  type="text" class="form-control" value=<?php echo $data['job'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Official Address</label>
+                                                                    <input name="officialAddress" type="text" class="form-control" value=<?php echo $data['officialAddress'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Date of Birth</label>
+                                                                    <input name="dob" type="date" class="form-control" value=<?php echo $data['DOB'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>DP</label>
+                                                                    <input name="dp" class="hd-pro-img" type="file" value=<?php echo $data['dp'] ?>/>
+                                                                </div>
+                                                                <!-- <div class="form-group alert-up-pd">
                                                                     <div class="dz-message needsclick download-custom">
                                                                         <i class="fa fa-download edudropnone" aria-hidden="true"></i>
                                                                         <h2 class="edudropnone">Drop image here or click to upload.</h2>
-                                                                        <p class="edudropnone"><span class="note needsclick">(This is just a demo dropzone. Selected image is <strong>not</strong> actually uploaded.)</span>
+                                                                        <p class="edudropnone"><span class="note needsclick">(Select your profile picture)</span>
                                                                         </p>
-                                                                        <input name="imageico" class="hd-pro-img" type="text" />
+                                                                        <input name="dp" class="hd-pro-img" type="file" />
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
+
                                                             </div>
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
-                                                                    <input type="text" class="form-control" placeholder="CSE" value="CSE">
-                                                                </div>
-                                                                <div class="form-group edit-ta-resize res-mg-t-15">
-                                                                    <textarea name="description">Lorem ipsum dolor sit amet of, consectetur adipiscing elitable. Vestibulum tincidunt est vitae ultrices accumsan.</textarea>
+                                                                    <label>Opened By</label>
+                                                                    <input name="openedBy" type="text" class="form-control" value=<?php echo $data['openedBy'] ?>>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <select class="form-control">
-																		<option>Male</option>
-																		<option>Male</option>
-																		<option>Female</option>
+                                                                    <label>Opened Branch</label>
+                                                                    <input name="openedBranch" type="text" class="form-control" value=<?php echo $data['openedBranch'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Joined Date</label>
+                                                                    <input name="joinedDate" type="text" class="form-control" value=<?php echo $data['joinedDate'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Updated Date</label>
+                                                                    <input name="updatedDate" type="text" class="form-control" value=<?php echo $data['updatedDate'] ?>>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select name="gender" class="form-control">
+																		<option value="none" selected="" disabled="">Select Gender</option>
+																		<option value="0">Male</option>
+																		<option value="1">Female</option>
 																	</select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select class="form-control">
-																			<option>Nepal</option>
-																			<option>India</option>
-																			<option>Pakistan</option>
-																			<option>Amerika</option>
-																			<option>China</option>
-																			<option>Dubai</option>
-																			<option>Nepal</option>
-																		</select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select class="form-control">
-																			<option>Maharastra</option>
-																			<option>Gujarat</option>
-																			<option>Maharastra</option>
-																			<option>Rajastan</option>
-																			<option>Maharastra</option>
-																			<option>Rajastan</option>
-																			<option>Gujarat</option>
-																		</select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <select class="form-control">
-																			<option>Baroda</option>
-																			<option>Surat</option>
-																			<option>Baroda</option>
-																			<option>Navsari</option>
-																			<option>Baroda</option>
-																			<option>Surat</option>
-																		</select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <input type="text" class="form-control" placeholder="www.uttara.com" value="www.uttara.com">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <div class="payment-adress">
-                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                                    <button type="submit" name="edit" class="btn btn-primary waves-effect waves-light">Save</button>
                                                                 </div>
                                                             </div>
                                                         </div>

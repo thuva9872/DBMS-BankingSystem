@@ -48,7 +48,11 @@ class Customer extends User
      * Register customer
      */
     public function register($password){
-        $sql = "INSERT INTO customer VALUES ('".$this->getNIC()."','".$this->getFname()."','".$this->getMail()."','".$password."','".$this->getmobileNo()."','".$this->tempAddress."','".$this->getAddress()."','".$this->job."','".$this->officialAddress."','".$this->getDOB()."','".$this->getDp()."','".$this->openedBy."','".$this->getBranchCode()."','".$this->getJoinedDate()."','".$this->getJoinedDate()."',null)";
+        $filenm=$this->getDp();
+        $upload_dir = "../img/profile/";
+        $uploaded_file = $upload_dir.$filenm; 
+        move_uploaded_file($_FILES['dp']['tmp_name'],$uploaded_file);
+        $sql = "INSERT INTO customer VALUES ('".$this->getNIC()."','".$this->getFname()."','".$this->getMail()."','".$password."','".$this->getmobileNo()."','".$this->tempAddress."','".$this->getAddress()."','".$this->job."','".$this->officialAddress."','".$this->getDOB()."','".$filenm."','".$this->openedBy."','".$this->getBranchCode()."','".$this->getJoinedDate()."','".$this->getJoinedDate()."',null)";
         $stmt = (new Connection)->connect()->prepare($sql);
         $result=$stmt->execute();
         if ($result){

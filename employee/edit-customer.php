@@ -6,11 +6,14 @@
         $data=$loginedUser->showCustomer($_SESSION['nic']);
         if (isset($_POST['edit'])){
             $currentDate=date('Y-m-d h:i:s a', time());
-            $customer=new Customer($_REQUEST['email'],$_REQUEST['NIC'],$_REQUEST['firstName'],$_REQUEST['mobileNo'],$_REQUEST['openedBranch'],$_REQUEST['dob'],$_REQUEST['tempAddress'],$_REQUEST['permanentAddress'],$_REQUEST['job'],$_REQUEST['officialAddress'],$_REQUEST['openedBy'],$_REQUEST['dp'],$_REQUEST['joinedDate'],null);
+            $random_digit=rand(000000,999999);
+            $fileName = $_FILES['dp']['name'];
+            $dp = $random_digit.$fileName;
+            $customer=new Customer($_REQUEST['email'],$_REQUEST['NIC'],$_REQUEST['firstName'],$_REQUEST['mobileNo'],$_REQUEST['openedBranch'],$_REQUEST['dob'],$_REQUEST['tempAddress'],$_REQUEST['permanentAddress'],$_REQUEST['job'],$_REQUEST['officialAddress'],$_REQUEST['openedBy'],$dp,$_REQUEST['joinedDate'],null);
             $result=$loginedUser->editCustomer($customer,$currentDate);
             if($result){
                 echo "Edited";
-                header("location: select-customer.php");
+                header("location: all-customers.php");
             }
             else{
                 echo "Failed";
@@ -63,7 +66,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="review-content-section">
                                                 <div id="dropzone1" class="pro-ad">
-                                                    <form action="edit-customer.php" method="POST" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload">
+                                                    <form action="edit-customer.php" method="POST" class="dropzone dropzone-custom needsclick add-professors" id="demo1-upload" enctype="multipart/form-data">
                                                         <div class="row">
                                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                                 <div class="form-group">
@@ -105,7 +108,9 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label>DP</label>
-                                                                    <input name="dp" class="hd-pro-img" type="file" value=<?php echo $data['dp'] ?>>
+                                                                    <input name="dp" id="dp" class="hd-pro-img" type="file" value=<?php echo $data['dp'] ?> required>
+                                                                    <div> <?php  $upload_dir = "../img/profile/";
+                                                                                echo "<img src='".$upload_dir.$data['dp']."' width='200px' height='150px'>"; ?></div>
                                                                 </div>
                                                                 <!-- <div class="form-group alert-up-pd">
                                                                     <div class="dz-message needsclick download-custom">

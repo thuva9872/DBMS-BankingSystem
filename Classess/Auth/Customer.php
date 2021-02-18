@@ -48,7 +48,11 @@ class Customer extends User
      * Register customer
      */
     public function register($password){
-        $sql = "INSERT INTO customer VALUES ('".$this->getNIC()."','".$this->getFname()."','".$this->getMail()."','".$password."','".$this->getmobileNo()."','".$this->tempAddress."','".$this->getAddress()."','".$this->job."','".$this->officialAddress."','".$this->getDOB()."','".$this->getDp()."','".$this->openedBy."','".$this->getBranchCode()."','".$this->getJoinedDate()."','".$this->getJoinedDate()."',null)";
+        $filenm=$this->getDp();
+        $upload_dir = "../img/profile/";
+        $uploaded_file = $upload_dir.$filenm; 
+        move_uploaded_file($_FILES['dp']['tmp_name'],$uploaded_file);
+        $sql = "INSERT INTO customer VALUES ('".$this->getNIC()."','".$this->getFname()."','".$this->getMail()."','".$password."','".$this->getmobileNo()."','".$this->tempAddress."','".$this->getAddress()."','".$this->job."','".$this->officialAddress."','".$this->getDOB()."','".$filenm."','".$this->openedBy."','".$this->getBranchCode()."','".$this->getJoinedDate()."','".$this->getJoinedDate()."',null)";
         $stmt = (new Connection)->connect()->prepare($sql);
         $result=$stmt->execute();
         if ($result){
@@ -59,7 +63,11 @@ class Customer extends User
         }
     }
     public function edit($updatedDate){
-        $sql = "UPDATE customer SET NIC='".$this->getNIC()."',email='".$this->getMail()."',name='".$this->getFname()."',mobileNo='".$this->getmobileNo()."',tempAddress='".$this->gettempAddress()."',permanantAddress='".$this->getAddress()."',Job='".$this->getJob()."',officialAddress='".$this->getOfficialAddress()."',DOB='".$this->getDOB()."',dp='".$this->getDp()."',openedBy='".$this->getOpenedBy()."',openedBranch='".$this->getBranchCode()."',joinedDate='".$this->getJoinedDate()."',updatedDate='".$updatedDate."',leftDate=null WHERE NIC='".$this->getNIC()."'";
+        $filenm=$this->getDp();
+        $upload_dir = "../img/profile/";
+        $uploaded_file = $upload_dir.$filenm; 
+        move_uploaded_file($_FILES['dp']['tmp_name'],$uploaded_file);
+        $sql = "UPDATE customer SET NIC='".$this->getNIC()."',email='".$this->getMail()."',name='".$this->getFname()."',mobileNo='".$this->getmobileNo()."',tempAddress='".$this->gettempAddress()."',permanantAddress='".$this->getAddress()."',Job='".$this->getJob()."',officialAddress='".$this->getOfficialAddress()."',DOB='".$this->getDOB()."',dp='".$filenm."',openedBy='".$this->getOpenedBy()."',openedBranch='".$this->getBranchCode()."',joinedDate='".$this->getJoinedDate()."',updatedDate='".$updatedDate."',leftDate=null WHERE NIC='".$this->getNIC()."'";
         $stmt = (new Connection)->connect()->prepare($sql);
         $result=$stmt->execute();
         if ($result){

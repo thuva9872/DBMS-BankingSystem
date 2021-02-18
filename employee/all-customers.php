@@ -2,6 +2,10 @@
 <html class="no-js" lang="en">
 <?php
   include("../layout/header.php");
+  if (isset($_POST['edit'])){
+      $_SESSION['nic']=$_REQUEST['edit'];
+      header("location: edit-customer.php");
+  }
 ?>
             <div class="breadcome-area">
                 <div class="container-fluid">
@@ -71,9 +75,11 @@
                                                 <th data-field="joinedDate" data-editable="true">Joined Date</th>
                                                 <th data-field="updatedDate" data-editable="true">Updated Date</th>
                                                 <th data-field="status">Status</th>
+                                                <th data-field="edit"></th>
                                             </tr>
                                        
                                         <?php 
+                                            $upload_dir = "../img/profile/";
                                             $all_customers=$loginedUser->showCustomers();
                                             foreach ($all_customers as $data){
                                         ?>
@@ -87,7 +93,7 @@
                                                 <td><?php echo $data['job'] ?></td>
                                                 <td><?php echo $data['officialAddress'] ?></td>
                                                 <td><?php echo $data['DOB'] ?></td>
-                                                <td><?php echo $data['dp'] ?></td>
+                                                <td><?php echo "<img src='".$upload_dir.$data['dp']."' width='200px' height='200px'>" ?></td>
                                                 <td><?php echo $data['openedBy'] ?></td>
                                                 <td><?php echo $data['openedBranch'] ?></td>
                                                 <td><?php echo $data['joinedDate'] ?></td>
@@ -96,6 +102,7 @@
                                                         else {echo "Deactivated";}
                                                     ?>
                                                 </td>
+                                                <td><form action="" method="POST"><button type="submit" name="edit" value=<?php echo $data['NIC'] ?> class="btn btn-primary waves-effect waves-light">Edit</button></form></td>
                                             </tr>
                                         <?php 
                                             }
